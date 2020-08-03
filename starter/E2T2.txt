@@ -1,3 +1,16 @@
 Research and analyze which of the vulnerabilities appear to be related to the code that was deployed for the environment in this project.
 
+As mentioned before all ports of the Web Service Instance - C3 are reachable from the internet.
+The EBS volume attached to the web service instance is not encrypted.
+SSH traffic for the security groups is accessible .
+RDP traffic is Allowed from 0.0.0.0/0.
+One or more HTTP listeners of the application load balancer do not have HTTP to HTTPS.
+The default security group associated to the VPC accepts all traffic from all protocols and all ports.
+
 Bonus - provide recommendations on how to remediate the vulnerabilities.
+
+Fix the vpc default security group to accept traffic only from the necessary ports.
+Fix the security group from the web service instance to accept incoming traffic only from the load balancer security group in the port 5000, 
+  delete the remaining inbound rules.
+Enable encryption in the EBS volume attached to the instance.
+

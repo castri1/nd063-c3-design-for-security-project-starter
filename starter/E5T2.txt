@@ -1,13 +1,30 @@
 # Identify tools that will allow you to do the following:
 
 ## Scan infrastructure as code templates
+For static code analysis:
+Cloudformation code:
+  - Cfripper
+  - Cloudsploit
+  - cfn-lint
+
+Terraform cod:
+  - Chef inspec
+  - Open policy agent / Regula
+  - Terrascan
 
 ### Example vulnerability
+Security group allowing inbound traffic from anywhere
 
 ##Scan AMI’s or containers for OS vulnerabilities
+For EC2 instances:AWS Inspector
 
 ### Example vulnerability
+Access to your EC2 instances from the internet
+Remote root login being enabled
+Vulnerable software versions installed
 
 ##Scan an AWS environment for cloud configuration vulnerabilities
+AWS Config
 
 ### Example vulnerability
+EBS volumes not encrypted.

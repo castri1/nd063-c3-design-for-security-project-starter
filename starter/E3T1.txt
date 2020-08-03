@@ -1,3 +1,13 @@
 # Describe GuardDuty findings that were detected related to the brute force attack
 
+GuardDuty has detected two findings: 
+One related to the instance that is performing the attack (severity HIGH) and the other one is related to the instance that is subject of the attack (severity LOW).
+According to the documentation: This finding's severity is low if a brute force attack is aimed at one of your EC2 instances. This finding's severity is high if your EC2 instance is being used to perform the brute force attack.
+
 # Research the AWS Guard Duty documentation page and explain how GuardDuty may have detected this attack - i.e. what was its source of information.
+
+GuarDuty is a service for threat detection by continuously monitoring the network activity, data access patterns, 
+and account behavior within the AWS environment. The service uses machine learning, anomaly detection, and integrated threat intelligence 
+feeds from AWS, CrowdStrike, and Proofpoint to identify and prioritize potential threats.
+
+It's sources of information are the events generated across multiple AWS data sources, such as AWS CloudTrail event logs, Amazon VPC Flow Logs, and DNS logs.

@@ -2,4 +2,16 @@
 
 # Identify 2-3 changes that can be made to our environment to prevent an ssh brute force attack from the internet.
 
-# Neither instance should have had access to the secret recipes bucket, in the even that instance API credentials were compromised how could we have prevented access to sensitive data.
+Fix the Web instance security group:
+  - remove all inbound rules configured
+  - create a new inbound rule accepting traffic incoming from the load balancer's security group in the port 5000.
+
+Fix the VPC default security group. Remove all traffic inbound rule and allow only incoming traffic from the necessary ports.
+
+# Neither instance should have had access to the secret recipes bucket, in the event that instance API credentials were compromised how could we have prevented access to sensitive data.
+
+  - The buckets should have had encryption at rest by default.
+  - Create S3 bucket policies to control who can access the S3 bucket, what actions can be performed and what specific resources that statement applies to
+  - Use object versioning
+  - Use VPC endpoints to block requests that do not originate from the VPC network.
+  - Block public access

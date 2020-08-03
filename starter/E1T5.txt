@@ -1,5 +1,16 @@
 Based on the architecture diagram, and the steps you have taken so far to upload data and access the application web service, identify at least 2 obvious poor practices as it relates to security.  Include justification.
 
 # Poor practice 1
+The web service instance is exposed directly to the internet.
+Looking at the security group the instance is associated with, I can see that all ports are open and allows all kinds of traffic, i.e. I can access
+the instance using its public DNS or connect directly to it via SSH.
+This instance should be allowing traffic only from the load balancer.
 
 # Poor practice 2
+The exercise asks us to push the recipes content to the S3 buckets using the aws cli. Using the cli implies having aws secret access key and secret
+access token to be able to interact with AWS's apis. Using these credentials might supose a vulnerability since we could loose them and be used to
+access and attack the account.
+
+# Poor practice 3
+I can see that both s3 buckets don't have encryption at rest. In the context of the exercise we dont have sensitive data that could be stolen and
+used in a wrong way. Using encryption at rest is always a good practice.
