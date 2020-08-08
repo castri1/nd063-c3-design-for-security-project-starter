@@ -11,3 +11,7 @@ and account behavior within the AWS environment. The service uses machine learni
 feeds from AWS, CrowdStrike, and Proofpoint to identify and prioritize potential threats.
 
 It's sources of information are the events generated across multiple AWS data sources, such as AWS CloudTrail event logs, Amazon VPC Flow Logs, and DNS logs.
+
+As per the documentation, VPC Flow Logs capture information about the IP traffic going to and from Amazon EC2 network interfaces. The SSH bruteforce attack
+tries to guess the password pointing to port 22 on the instance. So when enabling the GuardDuty service, the VPC Flow logs are immediately analyzed
+and unusual IP traffic activity can be detected.

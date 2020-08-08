@@ -13,18 +13,38 @@ Terraform cod:
   - Terrascan
 
 ### Example vulnerability
-Security group allowing inbound traffic from anywhere
+Security group allowing inbound traffic from anywhere. This means that security groups
+are allowing TCP traffic from all sources to all ports.
+The aforementioned is a bad practice as we are exposing the system publicly and make it vulnerable
+to external attacks. External attacks can be perfomed out of our cloud or by another instance that has
+been compromised within our VPC for example.
+With a tool that performs a static code analysis to our IaC we can detect such bad practices before
+deploying deploying changes to our current infrastructure.
 
 ##Scan AMI’s or containers for OS vulnerabilities
-For EC2 instances:AWS Inspector
+For Docker images we can use Clair
+One way to prevent breaches is to regularly scan Docker images and compare the dependencies to a known list 
+of common vulnerabilities and exposures (CVEs). Public CVE lists contain an identification number, description, 
+and at least one public reference for known cybersecurity vulnerabilities. 
 
 ### Example vulnerability
-Access to your EC2 instances from the internet
-Remote root login being enabled
-Vulnerable software versions installed
+An example vulnerability related to Docker containers could be the following: 
+
+CVE-ID:
+CVE-2018-20699
+
+Description
+Docker Engine before 18.09 allows attackers to cause a denial of service (dockerd memory consumption) via a large 
+integer in a --cpuset-mems or --cpuset-cpus value, related to daemon/daemon_unix.go, pkg/parsers/parsers.go, 
+and pkg/sysinfo/sysinfo.go.
+https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2018-20699
 
 ##Scan an AWS environment for cloud configuration vulnerabilities
 AWS Config
 
 ### Example vulnerability
 EBS volumes not encrypted.
+EBS volumes are network hard drives that are attached to an EC2 instance. A good practice while using
+these drives is to use encryption at rest and ensure the data stored in these drives is securely saved.
+If an EC2 instance is compromised, the attacker could reach the volume and perform data exfiltration out of the volume.
+Encrypting the volumes is a good way to reduce the blast radius of the attack.
